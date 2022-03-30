@@ -1,4 +1,3 @@
-from functools import lru_cache
 from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
@@ -17,13 +16,8 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World!"}
 
-
-@lru_cache()
-def get_settings():
-    return settings.Settings()
-
 @app.get("/info")
-async def info(settings: settings.Settings = Depends(get_settings)):
+async def info(settings: settings.Env = Depends(settings.get_env)):
     return {
         "app_name": settings.app_name,
         "admin_email": settings.admin_email,

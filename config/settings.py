@@ -1,7 +1,8 @@
+from functools import lru_cache
 from pydantic import BaseSettings
 
 
-class Settings(BaseSettings):
+class Env(BaseSettings):
     app_name: str = "FAST API"
     admin_email: str
 
@@ -16,4 +17,6 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
 
-setings = Settings()
+@lru_cache()
+def get_env():
+    return Env()
