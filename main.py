@@ -9,7 +9,8 @@ from database.db import engine
 from api.api import api_router
 from config import settings
 
-base.Base.metadata.create_all(bind=engine)
+if settings.get_env().env == "development":
+    base.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -17,6 +18,7 @@ app = FastAPI()
 @app.get('/')
 async def root():
     return {"message": "Hello World!"}
+
 
 @app.get("/info")
 async def info(settings: settings.Env = Depends(settings.get_env)):

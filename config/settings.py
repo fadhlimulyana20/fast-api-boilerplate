@@ -3,6 +3,8 @@ from pydantic import BaseSettings
 
 
 class Env(BaseSettings):
+    env: str
+
     app_name: str = "FAST API"
     admin_email: str
 
