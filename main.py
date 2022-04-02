@@ -1,6 +1,8 @@
+from imp import reload
 from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+import uvicorn
 
 from models import base
 from database.db import engine
@@ -25,3 +27,6 @@ async def info(settings: settings.Env = Depends(settings.get_env)):
     }
 
 app.include_router(api_router)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
