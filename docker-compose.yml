@@ -19,7 +19,7 @@ services:
     container_name: fastapi_app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     ports:
       - 8000:8000
     restart: on-failure

@@ -1,5 +1,6 @@
-from imp import reload
+import os
 from typing import List
+import alembic
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 import uvicorn
@@ -10,7 +11,10 @@ from api.api import api_router
 from config import settings
 
 if settings.get_env().env == "development":
-    base.Base.metadata.create_all(bind=engine)
+    print("Delevelopment mode")
+    print("Running Migration")
+    migration = os.system("alembic upgrade head")
+    print(migration)
 
 app = FastAPI()
 

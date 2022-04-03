@@ -23,8 +23,8 @@ def upgrade():
         sa.Column('email', sa.String(100), nullable=False),
         sa.Column('password', sa.String(255), nullable=False),
         sa.Column('name', sa.String(150), nullable=False),
-        sa.Column('created_at', sa.DateTime, server_default=sa.text('NOW()')),
-        sa.Column('update_at', sa.DateTime, server_default=sa.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
+        sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.func.now()),
+        sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.func.now())
     )
 
 
