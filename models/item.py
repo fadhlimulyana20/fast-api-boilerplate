@@ -3,7 +3,8 @@ from sqlalchemy.orm import relationship
 from models.base import Base
 
 
-class Items(Base):
+class Item(Base):
+    __tablename__ = 'items'
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(20), index=True)
     description = Column(String(255), index=True)
