@@ -19,3 +19,8 @@ alembic upgrade head
 ```sh
 alembic downgrade base
 ```
+## Alembic Autogenerate
+alembic autogenerate is now working fine. Just import the model you want to make autogenerate migration in __init__.py of models folder. Then run this command below.
+```sh
+alembic revision --autogenerate -m "Added price column"
+```
