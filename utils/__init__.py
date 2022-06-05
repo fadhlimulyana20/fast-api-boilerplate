@@ -1,1 +1,1 @@
-from utils.password import PaswwordUtils
+from utils.password import PasswordUtils

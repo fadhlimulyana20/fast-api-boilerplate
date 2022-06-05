@@ -8,6 +8,11 @@ class Env(BaseSettings):
     app_name: str = "FAST API"
     admin_email: str
 
+    # Security
+    secret_key: str
+    algorithm: str
+    access_token_expire_minutes: int
+
     # Database
     db_driver: str
     db_host: str
