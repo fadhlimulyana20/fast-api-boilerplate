@@ -9,7 +9,7 @@ from utils.password import PasswordUtils
 router = APIRouter(prefix='/auth', tags=['Auth'])
 
 @router.post('/login', response_model=authSchema.AuthResponse)
-def login(auth: authSchema.AuthLogin = Depends(), db: Session = Depends(get_db)):
+def login(auth: authSchema.AuthLogin, db: Session = Depends(get_db)):
     user = userCrud.get_user_by_email(db, auth.email)
     if not user:
         raise HTTPException(
