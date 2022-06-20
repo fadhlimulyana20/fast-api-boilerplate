@@ -1,3 +1,9 @@
+# Fast API Boilerplate
+REST API project template built with Fast API.
+## Features
+- SQLAlchemy ORM
+- Alembic auto migration
+- Base CRUD Class set
 ## How to run Server
 ```sh
 # Copy .env.example
